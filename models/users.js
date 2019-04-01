@@ -1,11 +1,11 @@
 module.exports = {
-	add,
+	create,
 	find,
 	findBy,
 	findById
 };
 
-async function add(user) {
+async function create(user) {
 	const [id] = await db("users").insert(user);
 
 	return findById(id);
