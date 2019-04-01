@@ -1,3 +1,5 @@
+const db = require("../database/dbConfig");
+
 module.exports = {
 	create,
 	find,
@@ -7,7 +9,6 @@ module.exports = {
 
 async function create(user) {
 	const [id] = await db("users").insert(user);
-
 	return findById(id);
 }
 
