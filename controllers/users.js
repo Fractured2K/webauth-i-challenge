@@ -19,4 +19,7 @@ router.post("/register", (req, res) => {
 	}
 });
 
+// Login user
+router.post("/login", (req, res) => {});
+
 module.exports = router;
