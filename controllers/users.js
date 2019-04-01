@@ -38,4 +38,7 @@ router.post("/login", async (req, res) => {
 	}
 });
 
+// Get all users
+router.get('/users', async (req, res) => {})
+
 module.exports = router;
