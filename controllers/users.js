@@ -47,7 +47,13 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout user
-router.get('/logout', async (req, res) => {})
+router.get('/logout', async (req, res) => {
+    try {
+        if (req.session) return req.session.destroy();
+    } catch (err) {
+        res.status(500).json({ message: "Sorry, but something went wrong while trying to log out"})
+    }
+})
 
 // Get all users
 router.get('/users', restricted, async (req, res) => {
