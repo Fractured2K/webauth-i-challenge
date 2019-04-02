@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 
+const restricted = require('../middleware/restricted')
+
 const Users = require("../models/Users");
+
 
 // Create user
 router.post("/register", async (req, res) => {
@@ -44,7 +47,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Get all users
-router.get('/users', async (req, res) => {
+router.get('/users', restricted, async (req, res) => {
    try {
        const users = await Users.find()
        res.status(200).json(users)
