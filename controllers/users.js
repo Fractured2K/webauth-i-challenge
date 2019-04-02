@@ -46,6 +46,9 @@ router.post("/login", async (req, res) => {
 	}
 });
 
+// Logout user
+router.get('/logout', async (req, res) => {})
+
 // Get all users
 router.get('/users', restricted, async (req, res) => {
    try {
