@@ -11,7 +11,6 @@ router.post("/register", async (req, res) => {
         user.password = bcrypt.hashSync(user.password, 10);
 
         let newUser = await Users.create(user);
-        console.log(newUser)
 		res.status(201).json(newUser);
 	} catch (err) {
 		res.status(500).json({
@@ -30,7 +29,13 @@ router.post("/login", async (req, res) => {
         if(!user)
             return res.status(404).json({ message: "Sorry, but that user doesn't exist"})
 
-        res.status(200).json({ message: `Welcome, ${user.username}`})
+        if (user && bcrypt.compareSync(password, user.password)) {
+            req.session.user = user;
+
+            return res.status(200).json({ message: `Welcome, ${user.username}`})
+        }
+
+        return res.status(401).json({ message: "Invalid credentials"})
     } catch (err) {
 		res.status(500).json({
 			message: "Sorry, but there was an error while logging in"

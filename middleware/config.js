@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const session = require("express-session");
 
-const sessionConfig = require("./config/sessions");
+const sessionConfig = require("../config/sessions");
 
 module.exports = server => {
 	server.use(express.json());

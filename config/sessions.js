@@ -12,12 +12,12 @@ module.exports = {
 		maxAge: 1000 * 60 * 10,
 		secure: false,
 		httpOnly: true
-    }
-    store: new KnexSession({
-        knex: db,
+	},
+	store: new KnexSession({
+		knex: db,
 		tablename: "sessions",
 		sidfieldname: "sid",
 		createtable: true,
 		clearInterval: 1000 * 60 * 30
-    })
+	})
 };
